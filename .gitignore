@@ -3,5 +3,5 @@
 /zomatoApi-server/node_modules/
 
 # Files to be ignored:
-/zomato-app-client/package-lock.json/
-/zomatoApi-server/package-lock.json/
+/zomato-app-client/package-lock.json
+/zomatoApi-server/package-lock.json
