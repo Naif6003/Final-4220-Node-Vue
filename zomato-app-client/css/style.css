@@ -1,0 +1,135 @@
+/* GENERAL STYLES */
+#chat-app {
+    background: #efefef;
+}
+
+hr {
+    border-color: #3e3e6d;
+}
+
+/* LEFT COLUMN STYLES */
+.col.s3 {
+    background: #2a2f43;
+    border-top: 10px solid #278ca8;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    height: 100vh;
+    padding: 0;
+    -webkit-box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
+}
+
+.col.s3 input[type=text]:not(.browser-default) {
+    color: #FFFFFF;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.col.s3 input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #278ca8;
+    box-shadow: 0 1px 0 0 #278ca8;
+}
+
+.col.s3 button {
+    background: #278ca8;
+}
+
+
+/* RIGHT COLUMN STYLES */
+.col.s9 input[type=text]:not(.browser-default) {
+    color: #111111;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.col.s9 input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #2a2f43;
+    box-shadow: 0 1px 0 0 #2a2f43;
+}
+
+.col.s9 button {
+    background: #2a2f43;
+}
+
+/* USER LIST STYLES */
+
+.user-login {
+    position: absolute;
+    bottom: 10px;
+}
+.user-list, .user-login {
+    padding: 10px .75rem;
+}
+
+.user-list ul {
+    margin: 0;
+}
+.user-list h6 {
+    padding: 10px 0 10px 0;
+}
+
+.user-list span {
+    color: #ffffff;
+    padding: 0 0 0 2px;
+}
+
+.user-list img {
+    background: #ffffff;
+    vertical-align: middle;
+}
+
+.failed {
+    color: #fb78ad;
+}
+
+/* CHAT BOX STYLES */
+.chat-box {
+    background: #FFFFFF;
+    border-radius: 4px;
+    margin: 25px 5px;
+    min-height: 500px;
+    max-height: 500px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chat-box strong {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.chat-box small {
+    color: #AAAAAA;
+}
+
+.chat-box p {
+    border-bottom: #efefef solid 1px;
+    padding-bottom: 12px;
+}
+
+.chat-box img {
+    border: 1px solid #d0d0d0;
+    vertical-align: middle;
+}
+
+/* ME STYLES */
+
+.me {
+    background: #278ca8;
+    border-bottom: 1px solid #3e3e6d;
+    text-align: center;
+    -webkit-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.me h5 {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.me img {
+    background: #FFFFFF;
+}
+
