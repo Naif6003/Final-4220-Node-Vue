@@ -2,27 +2,33 @@ module.exports = (server) => {
     const
         io = require('socket.io')(server),
         moment = require('moment'),
-        index = require('./index')
+        indexApi = require('./index')
 
 
-    let users = []
-    const messages = []
-
-    // when the page is loaded in the browser the connection event is fired
     io.on('connection', socket => {
         
-            socket.on('search-city', cityname => {
-                
-                index.getcityidbyname(cityname)
+            socket.on('search-city', cityName => {  
+                indexApi.getcityidbyname(cityName)
                                 .then(results => {
                                     let citiesList = []
                                     results.data.location_suggestions.forEach(city => {
                                         citiesList.push(city.name)
                                     })
-                                    // console.log(citiesList)
                                     socket.emit('show-cities', citiesList)
                     })
 
+            })
+
+
+            socket.on('get-restaurants-by-cityName', cityName => {
+                indexApi.searchrestaurants(cityName)
+                    .then(results => {
+                        let restaurantsList = []
+                        results.data.restaurants.forEach(rest => {
+                            restaurantsList.push(rest.restaurant)
+                        })
+                        socket.emit('show-restaurants-by-cityname', restaurantsList)
+                    })
             })
         })
 }
