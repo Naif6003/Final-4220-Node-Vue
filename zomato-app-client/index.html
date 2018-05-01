@@ -3,7 +3,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>Chat App</title>
+   <title>Zomato</title>
 
    <link rel="shortcut icon" href="img/favicon-chat.png" />
    <!-- Import Google Fonts -->
@@ -22,30 +22,34 @@
 </head>
 
 <body>
-   <div id="chat-app">
+   <div id="zomato-app">
       <div class="row">
 
          <!-- users column -->
          <div class="col s3">
-
-               <input id='input' v-model="cityname" placeholder="name" type="text" class="u-full-width">
+                <p>Search restaurants by city name:</p>
+               <input id='input' v-model="cityname" placeholder="City Name" type="text" class="u-full-width">
                <button v-on:click="getCitybycityname" class="btn-small waves-effect waves-light" type="submit">
-                  Join
+                  Search
                </button>
          </div>
          <div v-show="showCities" class="me" class="col s9">
-            <h5> Pick a city from the suggestion:  </h5>
-                <ul>
-                    <li v-for="city in cities"> 
-                        <a v-on:click="findRestaurants(city)"> {{city}} </button>
-                    </li>
-                </ul>
+            <h3> Pick a city from the suggestion:  </h3>
+               
+                 <select v-model="cityname">
+                    <option v-for="city in cities">
+                        {{city}}
+                    </option>
+                </select>
+                        <button v-on:click="findRestaurants(cityname)"class="btn-small waves-effect waves-light" type="submit"> submit
+                                
+                        </button>
             </div>
-
-            <div class="chat-box" >
+            <div v-show="showRestaurants" class="zomato-box" >
                 <ul>
+                    <h4>Pick a Restaurant:</h4>
                     <li v-for="rest in restaurants"> 
-                        <span> {{rest.name}} </span>
+                        <a> {{rest.name}} </a>
                     </li>
                 </ul>
             </div>

@@ -14,12 +14,13 @@
 
 const socket = io()
 const app = new Vue({
-    el: '#chat-app',
+    el: '#zomato-app',
     data: {
         cities: [],
         cityname: '',
         showCities: false,
-        restaurants: []
+        restaurants: [],
+        showRestaurants: false
     },
     methods: {
     
@@ -49,6 +50,8 @@ socket.on('show-cities', citiesList => {
 socket.on('show-restaurants-by-cityname', restaurantsList => {
     if(restaurantsList){
         app.restaurants = restaurantsList
+        app.showRestaurants = true
+        
     }
 })
 
