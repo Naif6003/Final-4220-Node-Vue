@@ -32,19 +32,26 @@
                <button v-on:click="getCitybycityname" class="btn-small waves-effect waves-light" type="submit">
                   Join
                </button>
-
          </div>
-                <div class="col s9">
-                    <div v-show="cities">
-                        <ul>
-                            <li v-for="city in cities"> 
-                                <span> {{city}} </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+         <div v-show="showCities" class="me" class="col s9">
+            <h5> Pick a city from the suggestion:  </h5>
+                <ul>
+                    <li v-for="city in cities"> 
+                        <a v-on:click="findRestaurants(city)"> {{city}} </button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="chat-box" >
+                <ul>
+                    <li v-for="rest in restaurants"> 
+                        <span> {{rest.name}} </span>
+                    </li>
+                </ul>
+            </div>
     </div>
     </div>
+
    <script type="text/javascript" src="https://unpkg.com/vue@2.5.15/dist/vue.min.js"></script>
    <script type="text/javascript" src="https://unpkg.com/socket.io-client@2.1.0/dist/socket.io.js"></script>
    <script type="text/javascript" src="app.js"></script>

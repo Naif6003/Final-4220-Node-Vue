@@ -90,6 +90,7 @@ hr {
     min-height: 500px;
     max-height: 500px;
     padding: 10px;
+    text-align: center;
     overflow-y: auto;
 }
 
