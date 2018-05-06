@@ -2,7 +2,7 @@
 #hero{
     background-color: rgba(0,0,0,.5);
     color: white;
-    padding: 1em;
+    padding: 5em;
     border-bottom: 1px solid #A2482E;
     
 }
@@ -43,6 +43,9 @@ body{
     -webkit-box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
     box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
+}
+.row .col.s3{
+    padding: 2em;
 }
 
 .col.s3 input[type=text]:not(.browser-default) {
@@ -113,13 +116,11 @@ body{
 
 /* CHAT BOX STYLES */
 .zomato-box {
-    background: black;
+    background: #11100E;
     border-radius: 4px;
     padding: 10px;
     text-align: center;
     overflow-y: auto;
-    width: 100%;
-    float: right;
 }
 
 .zomato-box strong {
@@ -142,10 +143,10 @@ body{
     vertical-align: middle;
 }
 .zomato-box a{
-    color: #b7b7b6;
+    color: cadetblue;
     cursor: pointer;
     font-family: 'Rajdhani', sans-serif;
-    font-size: 18px;
+    font-size: 24px;
 
 }
 .zomato-box a:hover, a:focus{
@@ -167,11 +168,13 @@ body{
 .me {
     background: #141311;
     text-align: center;
+    margin-bottom: 6em;
 
 }
 
 .me h3 {
     padding-top: 1em;
+    padding-bottom: 1em;
     margin-top: 0px;
     color: #ffffff;
     font-family: 'Rajdhani', sans-serif;

@@ -39,5 +39,30 @@ module.exports = (server) => {
                     })
                 })
             })
+
+            socket.on('get-restaurant-details', restaurantId => {
+                console.log(restaurantId)
+                indexApi.getRestaurantReviewsAndRatings(restaurantId)
+                .then(results => {
+                    results.data.restaurants.forEach(rest =>{
+                        if(restaurant == rest.id){
+                                let detailsList = []
+                                results.data.restaurants.forEach(restaurantObj =>{
+                                    var restaurantChoice = {
+                                        name: restaurantObj.restaurant.name,
+                                        value: restaurantObj.restaurant,
+                                        cuisine: restaurantObj.cuisine,
+                                        currency: restaurantObj.currency
+                                    }
+            
+                                    detailsList.push(restaurantChoice);
+                                })
+                                socket.emit('show-restaurant-details', detailsList)
+
+                            
+                        }
+                    })
+                })
+            })
         })
 }

@@ -14,6 +14,18 @@
 //     props:['cityname','searchCity','error']
 // }
 
+const restaurantDetailsComponent = { 
+    template: ` <div class="zomato-box">
+                    <p v-for="data in details">
+                        <span><strong>{{data.details}}</strong> <span>
+                        <br />
+                       
+                    </p>
+                </div>`,
+props: ['details']
+
+}
+
 const socket = io()
 const app = new Vue({
     el: '#zomato-app',
@@ -24,7 +36,10 @@ const app = new Vue({
         restaurants: [],
         city: '',
         showRestaurants: false,
-        error: false
+        error: false,
+        showDetails: false,
+        details: [],
+        restaurant: ''
     },
     methods: {
         searchCity: function(cityname){
@@ -36,14 +51,15 @@ const app = new Vue({
 
         findRestaurants: function(city){
             socket.emit('get-restaurants-by-cityName', this.city)
+        },
+        displayDetails: function(restaurant){
+            socket.emit('get-restaurant-details', this.restaurant)
         }
 
     },
     components: {
-
+        'restaurant-details-component':restaurantDetailsComponent
         //  'search-cities-component': searchCitiesComponent
-        // 'chat-component': chatComponent,
-        // 'user-component': userComponent
     }
 })
 
@@ -59,6 +75,13 @@ socket.on('show-restaurants-by-cityname', restaurantsList => {
         app.restaurants = restaurantsList
         app.showRestaurants = true
         
+    }
+})
+
+socket.on('show-restaurant-details', details => {
+    if(details){
+        app.details = details
+        app.showDetails = true
     }
 })
 
