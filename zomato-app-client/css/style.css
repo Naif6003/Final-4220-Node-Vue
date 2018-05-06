@@ -1,4 +1,16 @@
 /* GENERAL STYLES */
+#hero{
+    background-color: rgba(0,0,0,.5);
+    color: white;
+    padding: 1em;
+    border-bottom: 1px solid #A2482E;
+    
+}
+#hero-img{
+    background-image: url(../img/hero.jpg);
+}
+
+
 #zomato-app {
     background: #141311;
 }
@@ -168,4 +180,3 @@ body{
 .me img {
     background: #FFFFFF;
 }
-

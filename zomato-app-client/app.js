@@ -1,15 +1,14 @@
-
-// const citiesComponent = {
-//     template: `<div v-show="showCities" class="me" class="col s9">
-//                 <h5> Pick a city from the suggestion:  </h5>
-//                     <ul>
-//                         <li v-for="city in cities"> 
-//                             <a v-on:click="findRestaurants(city)"> {{city}} </button>
-//                         </li>
-//                     </ul>
-//                 </div>`,
-//         props:["cities","showCities","findRestaurants"]
-// }
+const citiesComponent = {
+    template: `<div v-show="showCities" class="me" class="col s9">
+                <h5> Pick a city from the suggestion:  </h5>
+                    <ul>
+                        <li v-for="city in cities"> 
+                            <a v-on:click="findRestaurants(city)"> {{city}} </button>
+                        </li>
+                    </ul>
+                </div>`,
+        props:["cities","showCities","findRestaurants"]
+}
 
 
 const socket = io()
@@ -34,7 +33,7 @@ const app = new Vue({
 
     },
     components: {
-        // 'cities-component': citiesComponent
+        'cities-component': citiesComponent
         // 'chat-component': chatComponent,
         // 'user-component': userComponent
     }

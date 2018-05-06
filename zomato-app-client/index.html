@@ -22,10 +22,15 @@
 </head>
 
 <body>
+    <section id="hero-img">
+        <div id="hero">
+        <h1>ZOMATO API</h1>
+    </div>
+    </section>
    <div id="zomato-app">
       <div class="row">
 
-         <!-- users column -->
+
          <div class="col s3">
                 <p>Search restaurants by city name:</p>
                <input id='input' v-model="cityname" placeholder="City Name" type="text" class="u-full-width">
@@ -33,6 +38,10 @@
                   Search
                </button>
          </div>
+
+         <!-- active cities component-->
+        <cities-component v-bind:cities="cities"></cities-component>
+
          <div v-show="showCities" class="me" class="col s9">
             <h3> Pick a city from the suggestion:  </h3>
                
@@ -50,6 +59,8 @@
                     <h4>Pick a Restaurant:</h4>
                     <li v-for="rest in restaurants"> 
                         <a> {{rest.name}} </a>
+                        <!-- <a> {{rest.cuisines}} </a> -->
+                        
                     </li>
                 </ul>
             </div>

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bulma": "^0.7.1",
     "inquirer": "^5.2.0",
     "zomatoApi-server": "file:../zomatoApi-server"
   }
