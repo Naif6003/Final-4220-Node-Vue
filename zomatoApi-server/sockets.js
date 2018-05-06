@@ -21,14 +21,23 @@ module.exports = (server) => {
 
 
             socket.on('get-restaurants-by-cityName', cityName => {
-                indexApi.searchrestaurants(cityName)
-                    .then(results => {
-                        let restaurantsList = []
-                        results.data.restaurants.forEach(rest => {
-                            restaurantsList.push(rest.restaurant)
-                        })
-                        socket.emit('show-restaurants-by-cityname', restaurantsList)
+                // console.log(cityName)
+
+                indexApi.getcityidbyname(cityName)
+                .then(result => {
+                    result.data.location_suggestions.forEach(obj => {
+                        if(cityName == obj.name){
+                            indexApi.searchrestaurants(obj.id)
+                                .then(results => {
+                                    let restaurantsList = []
+                                    results.data.restaurants.forEach(rest => {
+                                        restaurantsList.push(rest.restaurant)
+                                    })
+                                    socket.emit('show-restaurants-by-cityname', restaurantsList)
+                                })
+                        }
                     })
+                })
             })
         })
 }
