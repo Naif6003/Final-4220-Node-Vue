@@ -1,15 +1,18 @@
-const citiesComponent = {
-    template: `<div v-show="showCities" class="me" class="col s9">
-                <h5> Pick a city from the suggestion:  </h5>
-                    <ul>
-                        <li v-for="city in cities"> 
-                            <a v-on:click="findRestaurants(city)"> {{city}} </button>
-                        </li>
-                    </ul>
-                </div>`,
-        props:["cities","showCities","findRestaurants"]
-}
 
+
+// const searchCitiesComponent = {
+//     template: `<div class="search-city-entry">
+//                     <p>Search restaurants by city name:</p>
+//                     <input id="input" v-model="cityname" placeholder="City Name" type="text" class="u-full-width">
+//                     <button v-on:click="searchCity" class="btn-small waves-effect waves-light" type="submit">
+//                         Search
+//                     </button>
+//                     <p class="help has-text-danger" v-if="error">
+//                         Field can not be blank..!!
+//                     </p>
+//                 </div>`,
+//     props:['cityname','searchCity','error']
+// }
 
 const socket = io()
 const app = new Vue({
@@ -19,21 +22,26 @@ const app = new Vue({
         cityname: '',
         showCities: false,
         restaurants: [],
-        showRestaurants: false
+        city: '',
+        showRestaurants: false,
+        error: false
     },
     methods: {
-    
-        getCitybycityname: function(){
+        searchCity: function(cityname){
+            if(this.cityname==='')
+                this.error= true
+            else    
             socket.emit('search-city', this.cityname)
         },
 
-        findRestaurants: function(cityName){
-            socket.emit('get-restaurants-by-cityName', this.cityName)
+        findRestaurants: function(city){
+            socket.emit('get-restaurants-by-cityName', this.city)
         }
 
     },
     components: {
-        'cities-component': citiesComponent
+
+        //  'search-cities-component': searchCitiesComponent
         // 'chat-component': chatComponent,
         // 'user-component': userComponent
     }
