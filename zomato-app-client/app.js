@@ -15,14 +15,15 @@
 // }
 
 const restaurantDetailsComponent = { 
-    template: ` <div class="zomato-box">
-                    <p v-for="restaurant in details">
-                            {{restaurant.name}}</br>
-                            {{restaurant.address}}</br>
-                            {{restaurant.url}}</br>
-                            {{restaurant.photo}}</br>
+    template: ` <div class="col s6">
+                    <div v-for="restaurant in details">
+                           <h4> {{restaurant.name}}</h4>
+                           <hr>
+                            <i class="fa fa-address-book" aria-hidden="true"></i> <h6>{{restaurant.address}} </h6></br>
+                            <i class="fa fa-book" aria-hidden="true"></i><a target="_blank">   {{restaurant.url}}</a></br>
+                            <i class="fa fa-picture-o" aria-hidden="true"></i> <a target="_blank"> {{restaurant.photo}}</a></br>
                        
-                    </p>
+                    </div>
                 </div>`,
 props: ['details']
 

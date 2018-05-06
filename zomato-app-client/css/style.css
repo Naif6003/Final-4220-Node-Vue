@@ -16,7 +16,8 @@
 }
 
 hr {
-    border-color: #A2482E;
+    border-color: #A2482E !important;
+    background-color:  #A2482E !important;
 }
 select{
     width: 60%;
@@ -30,6 +31,40 @@ p{
 body{
     background-color: #141311;
     height: 100%;
+}
+
+.fa{
+    margin-right: .5em;
+    color: #A2482E;
+    font-size: 16px;
+}
+/*RIght Column Styles */
+.col.s6{
+    background: #141311;
+    color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    height: 64.3vh;
+    -webkit-box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 0px 15px -5px rgba(0, 0, 0, 0.5);
+    float: right;
+    width: 30% !important;
+    height: 100%;
+    word-wrap: break-word;
+}
+.col.s6 p{
+    font-size: 24px;
+    font-weight: 700;
+}
+a{
+    color: cadetblue !important;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    word-wrap: break-word !important;
+    font-weight: 300 !important;
+
 }
 
 /* LEFT COLUMN STYLES */
@@ -147,6 +182,7 @@ body{
     cursor: pointer;
     font-family: 'Rajdhani', sans-serif;
     font-size: 24px;
+    word-wrap: break-word;
 
 }
 .zomato-box a:hover, a:focus{

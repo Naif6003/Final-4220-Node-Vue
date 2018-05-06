@@ -9,6 +9,7 @@
    <!-- Import Google Fonts -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,700" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <!-- Import materialize.css -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
    <!-- Import custom css -->
@@ -57,6 +58,8 @@
                                 
                         </button>
             </div>
+            <restaurant-details-component v-bind:details="details"></restaurant-details-component>
+
             
             <div v-show="showRestaurants" class="zomato-box" >
                 <!-- chat box -->
@@ -68,7 +71,6 @@
                     </div>
                 <!-- </ul> -->
             </div>
-            <restaurant-details-component v-bind:details="details"></restaurant-details-component>
     </div>
     </div>
 

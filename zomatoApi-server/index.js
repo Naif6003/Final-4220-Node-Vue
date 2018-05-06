@@ -7,7 +7,7 @@ _fetch = (command) => {
     return axios.get(`${config.url}/${command}`, {
         headers: {
             Accept: 'application/json',
-            'user-key': '96b7802e7ab814942f3f0a68fb3bab73'
+            'user-key': '04c6fbfc2c4918c90087b43b62f1d511 '
         }
     })
         .then(response => response)
