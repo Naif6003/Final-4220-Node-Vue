@@ -1,13 +1,16 @@
 
 // const citiesComponent = {
 //     template: `<div v-show="showCities" class="me" class="col s9">
-//                 <h5> Pick a city from the suggestion:  </h5>
-//                     <ul>
-//                         <li v-for="city in cities"> 
-//                             <a v-on:click="findRestaurants(city)"> {{city}} </button>
-//                         </li>
-//                     </ul>
-//                 </div>`,
+//                     <h3> Pick a city from the suggestion:  </h3>
+//                         <select v-model="cityname">
+//                             <option v-for="city in cities">
+//                                 {{city}}
+//                             </option>
+//                         </select>
+//             <button v-on:click="findRestaurants(city)" class="btn-small waves-effect waves-light" type="submit"> 
+//                  submit 
+//             </button>
+//     </div>`,
 //         props:["cities","showCities","findRestaurants"]
 // }
 
@@ -20,6 +23,7 @@ const app = new Vue({
         cityname: '',
         showCities: false,
         restaurants: [],
+        city: '',
         showRestaurants: false
     },
     methods: {
@@ -28,8 +32,8 @@ const app = new Vue({
             socket.emit('search-city', this.cityname)
         },
 
-        findRestaurants: function(cityName){
-            socket.emit('get-restaurants-by-cityName', this.cityName)
+        findRestaurants: function(){
+            socket.emit('get-restaurants-by-cityName', this.city)
         }
 
     },

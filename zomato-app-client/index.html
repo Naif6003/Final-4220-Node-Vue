@@ -38,16 +38,16 @@
 
             <h3> Pick a city from the suggestion:  </h3>
                
-                 <select v-model="cityname">
+                 <select v-model="city">
                     <option v-for="city in cities">
                         {{city}}
                     </option>
                 </select>
-                        <button v-on:click="findRestaurants(cityname)"class="btn-small waves-effect waves-light" type="submit"> 
+                        <button v-on:click="findRestaurants()" class="btn-small waves-effect waves-light" type="submit"> 
                             submit 
                         </button>
             </div>
-            <div v-show="showRestaurants" class="zomato-box" >
+            <div v-if="showRestaurants" class="zomato-box" >
 
                 <ul>
                     <h4>Pick a Restaurant:</h4>
