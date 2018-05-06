@@ -33,16 +33,17 @@
                   Join
                </button>
          </div>
+
          <div v-show="showCities" class="me" class="col s9">
             <h5> Pick a city from the suggestion:  </h5>
                 <ul>
                     <li v-for="city in cities"> 
-                        <a v-on:click="findRestaurants(city)"> {{city}} </button>
+                        <a v-on:click="findRestaurants(city)"> {{city}} </a>
                     </li>
                 </ul>
-            </div>
+            </div> 
 
-            <div class="chat-box" >
+             <div class="chat-box" >
                 <ul>
                     <li v-for="rest in restaurants"> 
                         <span> {{rest.name}} </span>

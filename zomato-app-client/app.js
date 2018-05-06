@@ -33,7 +33,7 @@ const app = new Vue({
 
     },
     components: {
-        // 'cities-component': citiesComponent
+        // 'cities-component': citiesComponent,
         // 'chat-component': chatComponent,
         // 'user-component': userComponent
     }
