@@ -42,26 +42,20 @@ module.exports = (server) => {
 
             socket.on('get-restaurant-details', restaurantId => {
                 console.log(restaurantId)
-                indexApi.getRestaurantReviewsAndRatings(restaurantId)
+                indexApi.getRestaurantReviewsAndRatings(restaurantId.R.res_id)
                 .then(results => {
-                    results.data.restaurants.forEach(rest =>{
-                        if(restaurant == rest.id){
-                                let detailsList = []
-                                results.data.restaurants.forEach(restaurantObj =>{
-                                    var restaurantChoice = {
-                                        name: restaurantObj.restaurant.name,
-                                        value: restaurantObj.restaurant,
-                                        cuisine: restaurantObj.cuisine,
-                                        currency: restaurantObj.currency
-                                    }
-            
-                                    detailsList.push(restaurantChoice);
-                                })
-                                socket.emit('show-restaurant-details', detailsList)
+                    console.log(results)
+                    const detailsList = []
+                    var restaurantChoice = {
+                        name: restaurantId.name,
+                        url: restaurantId.url,
+                        address: restaurantId.location.address+restaurantId.location.city,
+                        photo: restaurantId.photos_url
+                    }
 
-                            
-                        }
-                    })
+                    detailsList.push(restaurantChoice);
+                    socket.emit('show-restaurant-details', detailsList)
+            
                 })
             })
         })
