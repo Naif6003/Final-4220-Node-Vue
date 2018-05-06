@@ -1,27 +1,14 @@
 
-
-// const searchCitiesComponent = {
-//     template: `<div class="search-city-entry">
-//                     <p>Search restaurants by city name:</p>
-//                     <input id="input" v-model="cityname" placeholder="City Name" type="text" class="u-full-width">
-//                     <button v-on:click="searchCity" class="btn-small waves-effect waves-light" type="submit">
-//                         Search
-//                     </button>
-//                     <p class="help has-text-danger" v-if="error">
-//                         Field can not be blank..!!
-//                     </p>
-//                 </div>`,
-//     props:['cityname','searchCity','error']
-// }
-
 const restaurantDetailsComponent = { 
     template: ` <div class="col s6">
                     <div v-for="restaurant in details">
+                    <img src="../img/restaurant-image.png">
                            <h4> {{restaurant.name}}</h4>
                            <hr>
                             <i class="fa fa-address-book" aria-hidden="true"></i> <h6>{{restaurant.address}} </h6></br>
-                            <i class="fa fa-book" aria-hidden="true"></i><a target="_blank">   {{restaurant.url}}</a></br>
-                            <i class="fa fa-picture-o" aria-hidden="true"></i> <a target="_blank"> {{restaurant.photo}}</a></br>
+                            <i class="fa fa-book" aria-hidden="true"> <a v-bind:href="restaurant.url" target="_blank"> Website </a></i></br>
+                            <i class="fa fa-picture-o" aria-hidden="true"></i> <a v-bind:href="restaurant.photo" target="_blank">Photo Gallery</a></br>
+                            
                        
                     </div>
                 </div>`,
@@ -42,7 +29,9 @@ const app = new Vue({
         error: false,
         showDetails: false,
         details: [],
-        restaurant: ''
+        restaurant: '',
+        userChoice: '',
+        history: []
     },
     methods: {
         searchCity: function(cityname){
@@ -52,8 +41,9 @@ const app = new Vue({
             socket.emit('search-city', this.cityname)
         },
 
-        findRestaurants: function(city){
-            socket.emit('get-restaurants-by-cityName', this.city)
+        findRestaurants: function(cityValue){
+            this.userChoice = cityValue
+            socket.emit('get-restaurants-by-cityName', cityValue)
         },
         displayDetails: function(restaurant){
             socket.emit('get-restaurant-details', restaurant)
@@ -73,11 +63,12 @@ socket.on('show-cities', citiesList => {
     }
 })
 
-socket.on('show-restaurants-by-cityname', restaurantsList => {
+socket.on('show-restaurants-by-cityname', (restaurantsList,sh) => {
     if(restaurantsList){
         app.restaurants = restaurantsList
         app.showRestaurants = true
-        
+        app.history = sh
+        console.log(sh)
     }
 })
 

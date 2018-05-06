@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <title>Zomato</title>
 
-   <link rel="shortcut icon" href="img/favicon-chat.png" />
+   <link rel="shortcut icon" href="img/restaurant-image.png" />
    <!-- Import Google Fonts -->
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,700" rel="stylesheet">
@@ -44,6 +44,10 @@
                <p class="help has-text-danger" v-if="error">
                   Field can not be blank..!!
               </p>
+            </br> <h5> Search History </h5>
+                <div v-for="data in history">
+                    <a v-on:click="findRestaurants(data)"> {{ data }} </a>
+                </div>
          </div>
 
          <div v-show="showCities" class="me" class="col s9">

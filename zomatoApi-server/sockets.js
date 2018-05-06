@@ -6,7 +6,7 @@ module.exports = (server) => {
 
 
     io.on('connection', socket => {
-        
+            var searchHistory = [] 
             socket.on('search-city', cityName => {  
                 indexApi.getcityidbyname(cityName)
                                 .then(results => {
@@ -21,8 +21,7 @@ module.exports = (server) => {
 
 
             socket.on('get-restaurants-by-cityName', cityName => {
-                // console.log(cityName)
-
+                searchHistory.push(cityName)
                 indexApi.getcityidbyname(cityName)
                 .then(result => {
                     result.data.location_suggestions.forEach(obj => {
@@ -33,7 +32,7 @@ module.exports = (server) => {
                                     results.data.restaurants.forEach(rest => {
                                         restaurantsList.push(rest.restaurant)
                                     })
-                                    socket.emit('show-restaurants-by-cityname', restaurantsList)
+                                    socket.emit('show-restaurants-by-cityname', restaurantsList,searchHistory)
                                 })
                         }
                     })
@@ -41,10 +40,9 @@ module.exports = (server) => {
             })
 
             socket.on('get-restaurant-details', restaurantId => {
-                console.log(restaurantId)
+                
                 indexApi.getRestaurantReviewsAndRatings(restaurantId.R.res_id)
                 .then(results => {
-                    console.log(results)
                     const detailsList = []
                     var restaurantChoice = {
                         name: restaurantId.name,
