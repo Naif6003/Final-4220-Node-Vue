@@ -22,6 +22,8 @@ const app = new Vue({
         showCities: false,
         restaurants: [],
         city: '',
+        restDetails: {},
+        restName: '',
         showRestaurants: false,
         error: false
     },
@@ -35,6 +37,10 @@ const app = new Vue({
 
         findRestaurants: function(city){
             socket.emit('get-restaurants-by-cityName', this.city)
+        },
+
+        restdetails: function(restName){
+            socket.emit('get-rest-details', restName)
         }
 
     },

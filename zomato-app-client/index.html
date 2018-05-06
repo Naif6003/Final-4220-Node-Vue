@@ -51,12 +51,10 @@
                         </button>
             </div>
             <div v-show="showRestaurants" class="zomato-box" >
-                <ul>
                     <h4>Pick a Restaurant:</h4>
-                    <li v-for="rest in restaurants"> 
-                        <a> {{rest.name}} </a>
-                    </li>
-                </ul>
+                    <div v-for="rest in restaurants"> 
+                            <a v-on:click="restdetails(rest.name)"> {{rest.name}} </a>
+                    </div>
             </div>
     </div>
     </div>

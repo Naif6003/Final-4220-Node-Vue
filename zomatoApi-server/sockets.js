@@ -39,5 +39,10 @@ module.exports = (server) => {
                     })
                 })
             })
+
+
+            socket.on('get-rest-details' , restName => {
+                console.log("we are here " ,restName)
+            })
         })
 }
