@@ -60,18 +60,15 @@
             
             <div v-show="showRestaurants" class="zomato-box" >
                 <!-- chat box -->
-                <ul>
+                <!-- <ul> -->
                     <h4>Click on a restaurant for more details:</h4>
-                    <li v-for="rest in restaurants.slice(0,10)"> 
-                        <a v-on:click="displayDetails(rest)"> {{rest.name}} </a>
-                        <restaurant-details-component v-bind:details="details"></restaurant-details-component>
-
-
+                    <div v-for="rest in restaurants.slice(0,10)"> 
+                        <a v-on:click="displayDetails(rest)" > {{rest.name}} </a>
                         <!-- <a> {{rest.cuisines}} </a> -->
-                        
-                    </li>
-                </ul>
+                    </div>
+                <!-- </ul> -->
             </div>
+            <restaurant-details-component v-bind:details="details"></restaurant-details-component>
     </div>
     </div>
 

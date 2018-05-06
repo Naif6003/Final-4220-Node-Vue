@@ -16,9 +16,11 @@
 
 const restaurantDetailsComponent = { 
     template: ` <div class="zomato-box">
-                    <p v-for="data in details">
-                        <span><strong>{{data.details}}</strong> <span>
-                        <br />
+                    <p v-for="restaurant in details">
+                            {{restaurant.name}}</br>
+                            {{restaurant.address}}</br>
+                            {{restaurant.url}}</br>
+                            {{restaurant.photo}}</br>
                        
                     </p>
                 </div>`,
@@ -53,7 +55,7 @@ const app = new Vue({
             socket.emit('get-restaurants-by-cityName', this.city)
         },
         displayDetails: function(restaurant){
-            socket.emit('get-restaurant-details', this.restaurant)
+            socket.emit('get-restaurant-details', restaurant)
         }
 
     },
