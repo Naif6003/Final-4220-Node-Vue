@@ -12,21 +12,16 @@ module.exports = (server) => {
                                 .then(results => {
                                     let citiesList = []
                                     results.data.location_suggestions.forEach(city => {
-                                        citiesList.push(city.name)
+                                        citiesList.push({'id':city.id, 'name':city.name})
                                     })
                                     socket.emit('show-cities', citiesList)
                     })
 
             })
 
-
-            socket.on('get-restaurants-by-cityName', cityName => {
-                searchHistory.push(cityName)
-                indexApi.getcityidbyname(cityName)
-                .then(result => {
-                    result.data.location_suggestions.forEach(obj => {
-                        if(cityName == obj.name){
-                            indexApi.searchrestaurants(obj.id)
+            socket.on('get-restaurants-by-cityName', city => {
+                        searchHistory.push(city)
+                            indexApi.searchrestaurants(city.id)
                                 .then(results => {
                                     let restaurantsList = []
                                     results.data.restaurants.forEach(rest => {
@@ -34,25 +29,22 @@ module.exports = (server) => {
                                     })
                                     socket.emit('show-restaurants-by-cityname', restaurantsList,searchHistory)
                                 })
+                        })
+            
+            socket.on('get-restaurant-details', resId => {
+                indexApi.getRestaurant(resId)
+                        .then(restaurant=>{
+                            const restaurantData = {
+                            name: restaurant.data.name,
+                            url: restaurant.data.url,
+                            address: restaurant.data.location.address+restaurant.data.location.city,
+                            photo: restaurant.data.photos_url,
+                            thumb: restaurant.data.thumb
                         }
-                    })
-                })
-            })
+                        if (restaurantData.thumb == "")
+                            restaurantData.thumb = "../img/restaurant-image.png"
 
-            socket.on('get-restaurant-details', restaurantId => {
-                
-                indexApi.getRestaurantReviewsAndRatings(restaurantId.R.res_id)
-                .then(results => {
-                    const detailsList = []
-                    var restaurantChoice = {
-                        name: restaurantId.name,
-                        url: restaurantId.url,
-                        address: restaurantId.location.address+restaurantId.location.city,
-                        photo: restaurantId.photos_url
-                    }
-
-                    detailsList.push(restaurantChoice);
-                    socket.emit('show-restaurant-details', detailsList)
+                    socket.emit('show-restaurant-details', restaurantData)
             
                 })
             })

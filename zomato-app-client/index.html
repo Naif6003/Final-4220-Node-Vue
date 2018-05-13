@@ -46,23 +46,21 @@
               </p>
             </br> <h5> Search History </h5>
                 <div v-for="data in history">
-                    <a v-on:click="findRestaurants(data)"> {{ data }} </a>
+                    <a v-on:click="findRestaurants(data)"> {{ data.name }} </a>
                 </div>
          </div>
 
          <div v-show="showCities" class="me" class="col s9">
             <h3> Pick a city from the suggestion:  </h3>
                
-                 <select v-model="city">
-                    <option v-for="city in cities">
-                        {{city}}
-                    </option>
+                <select v-model="cityObject">
+                    <option v-for="city in cities" :value="city">{{city.name}}</option>
                 </select>
-                        <button v-on:click="findRestaurants(city)"class="btn-small waves-effect waves-light" type="submit"> submit
+                        <button v-on:click="findRestaurants(cityObject)"class="btn-small waves-effect waves-light" type="submit"> submit
                                 
                         </button>
             </div>
-            <restaurant-details-component v-bind:details="details"></restaurant-details-component>
+            <restaurant-details-component v-show="showDetails" v-bind:restaurant="restaurant"></restaurant-details-component>
 
             
             <div v-show="showRestaurants" class="zomato-box" >
@@ -70,7 +68,7 @@
                 <!-- <ul> -->
                     <h4>Click on a restaurant for more details:</h4>
                     <div v-for="rest in restaurants.slice(0,10)"> 
-                        <a v-on:click="displayDetails(rest)" > {{rest.name}} </a>
+                        <a v-on:click="displayDetails(rest.R.res_id)" > {{rest.name}} </a>
                         <!-- <a> {{rest.cuisines}} </a> -->
                     </div>
                 <!-- </ul> -->
