@@ -6,7 +6,7 @@ module.exports = (server) => {
 
 
     io.on('connection', socket => {
-            var searchHistory = [] 
+            const searchHistory = [] 
             socket.on('search-city', cityName => {  
                 indexApi.getcityidbyname(cityName)
                                 .then(results => {
